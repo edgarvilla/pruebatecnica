@@ -1,0 +1,37 @@
+<div class="container">
+  <h1>Listado de Posts</h1>
+  <div class="form-group">
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="basic-addon1">Filtro</span>
+      <input type="text" class="form-control" placeholder="Buscar.." aria-label="Username" aria-describedby="basic-addon1"  [(ngModel)]="filterpost" name="filterpost">
+    </div>
+  </div>
+</div>
+<div class="container">
+  <table class="table table-bordered border-primary">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Titulo</th>
+        <th>Descripción</th>
+        <th>Autor</th>
+        <th>Email</th>
+        <th>Palabras Claves</th>
+        <th>Creado</th>
+        <th>Actualizado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let post of posts | filter: filterpost">
+        <td>{{ post.id }}</td>
+        <td>{{ post.titulo }}</td>
+        <td>{{ post.description }}</td>
+        <td>{{ post.autor }}</td>
+        <td>{{ post.email }}</td>
+        <td>{{ post.palabras_clave }}</td>
+        <td>{{ post.created_at }}</td>
+        <td>{{ post.updated_at }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
