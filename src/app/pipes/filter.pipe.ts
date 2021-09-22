@@ -10,7 +10,7 @@ export class FilterPipe implements PipeTransform {
     const resultPosts = [];
 
     for(const post of value){
-      if(post.titulo.indexOf(args) > -1 || post.description.indexOf(args) > -1  || post.autor.indexOf(args) > -1){
+      if(post.titulo.indexOf(args) > -1 || post.description.indexOf(args) > -1  || post.autor.indexOf(args) > -1  || post.palabras_claves.indexOf(args) > -1){
          resultPosts.push(post);
       };
     };

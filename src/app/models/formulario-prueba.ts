@@ -6,7 +6,7 @@ export class FormularioPrueba{
     public autor: string,
     public email: string,
     public palabras_claves: string,
-    public cerated_at: Date,
+    public created_at: Date,
     public updated_at: Date){}
 
 }

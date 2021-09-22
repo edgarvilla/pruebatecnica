@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { FormularioPrueba } from 'src/app/models/formulario-prueba';
 import { ListDataService } from 'src/app/services/list-data.service';
+
+import {  takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-posts',
@@ -7,28 +11,28 @@ import { ListDataService } from 'src/app/services/list-data.service';
   styleUrls: ['./posts.component.css'],
   providers:  [ ListDataService ]
 })
-export class PostsComponent implements OnInit {
+export class PostsComponent implements OnInit, OnDestroy {
 
   filterpost = '';
+  posts: FormularioPrueba[] =[];
 
- posts : {
-  id: number;
-  titulo: string;
-  description: string;
-  autor: string;
-  email: string;
-  palabras_clave: string;
-  created_at: string;
-  updated_at: string;
-  }[] =[];
-  
-  constructor(private service:ListDataService) { 
-    this.posts = service.getListData();
+  destroy$: Subject<boolean> = new Subject<boolean>();
 
-  }
+
+  constructor(private service:ListDataService) { }
 
   ngOnInit() {
 
+    this.service.sendGetRequest().pipe(takeUntil(this.destroy$)).subscribe((data: any[])=>{
+      console.log(data);
+      this.posts = data;
+    })  
+
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next(true);
+    this.destroy$.unsubscribe();
   }
 
 }
