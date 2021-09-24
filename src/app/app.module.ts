@@ -4,7 +4,6 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HolaMundoComponent } from './components/hola-mundo.components';
 import { PostsComponent } from './components/posts/posts.component';
 import { FilterPipe } from './pipes/filter.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -16,11 +15,12 @@ import {MatNativeDateModule} from '@angular/material/core';
 import { Pagination } from './modules/material/pagination';
 
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+import { HeadPageComponent } from './components/head-page/head-page.component';
 
 @NgModule({
   declarations: [	
     AppComponent, 
-    HolaMundoComponent, 
+    HeadPageComponent, 
     PostsComponent,
     FilterPipe,
     Pagination
