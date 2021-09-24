@@ -24,7 +24,7 @@ export class PostsComponent implements OnInit, OnDestroy {
   ngOnInit() {
 
     this.service.sendGetRequest().pipe(takeUntil(this.destroy$)).subscribe((data: any[])=>{
-      console.log(data);
+      //console.log(data);
       this.posts = data;
     })  
 
