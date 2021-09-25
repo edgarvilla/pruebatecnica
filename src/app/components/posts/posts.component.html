@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container clear-top">
   <h1>Listado de Posts</h1>
   <div class="form-group">
     <div class="input-group mb-3">
@@ -7,7 +7,7 @@
     </div>
   </div>
 </div>
-<div class="container">
+<div class="container pb-5">
   <table  class="table table-bordered border-primary">
     <thead>
       <tr>
@@ -22,7 +22,10 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let post of posts | filter: filterpost">
+      <tr *ngFor="let post of posts | filter: filterpost | paginate: { id: 'listing_pagination',
+      itemsPerPage: 10,
+      currentPage: page,
+      totalItems: totalRec }">
         <td>{{ post.id }}</td>
         <td>{{ post.titulo }}</td>
         <td>{{ post.description }}</td>
@@ -35,6 +38,10 @@
     </tbody>
   </table>
 
-<pagination></pagination>
+  <div>
+		<pagination-controls  id="listing_pagination" (maxSize)="5" (directionLinks)="true" (pageChange)="page = $event"></pagination-controls>
+	</div>
+
+
 
 </div>

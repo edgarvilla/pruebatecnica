@@ -8,22 +8,26 @@ import { PostsComponent } from './components/posts/posts.component';
 import { FilterPipe } from './pipes/filter.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ListDataService } from './services/list-data.service';
-import { DemoMaterialModule } from './modules/material/material-module';
+
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatNativeDateModule} from '@angular/material/core';
-import { Pagination } from './modules/material/pagination';
+
 
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import { HeadPageComponent } from './components/head-page/head-page.component';
+import { FooterPageComponent } from './components/footer-page/footer-page.component';
+import { NavigationPageComponent } from './components/navigation-page/navigation-page.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [	
     AppComponent, 
     HeadPageComponent, 
+    FooterPageComponent,
+    NavigationPageComponent,
     PostsComponent,
-    FilterPipe,
-    Pagination
+    FilterPipe
    ],
   imports: [
     BrowserModule,
@@ -32,9 +36,9 @@ import { HeadPageComponent } from './components/head-page/head-page.component';
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
-    DemoMaterialModule,
     MatNativeDateModule,
     ReactiveFormsModule,
+    NgxPaginationModule
   ],
   providers: [ListDataService],
   bootstrap: [AppComponent]

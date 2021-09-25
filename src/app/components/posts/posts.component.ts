@@ -4,6 +4,7 @@ import { ListDataService } from 'src/app/services/list-data.service';
 
 import {  takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-posts',
@@ -18,6 +19,8 @@ export class PostsComponent implements OnInit, OnDestroy {
 
   destroy$: Subject<boolean> = new Subject<boolean>();
 
+  totalRec : number =100;
+  page: number = 1;
 
   constructor(private service:ListDataService) { }
 
@@ -26,6 +29,7 @@ export class PostsComponent implements OnInit, OnDestroy {
     this.service.sendGetRequest().pipe(takeUntil(this.destroy$)).subscribe((data: any[])=>{
       //console.log(data);
       this.posts = data;
+
     })  
 
   }
@@ -34,5 +38,7 @@ export class PostsComponent implements OnInit, OnDestroy {
     this.destroy$.next(true);
     this.destroy$.unsubscribe();
   }
+
+  
 
 }
